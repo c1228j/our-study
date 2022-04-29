@@ -1,4 +1,4 @@
-from news import News
+from lib.scraper.news import News
 
 # ヤフーニュースから何かしらのニュースを取得してくる
 class ScraperFromYahoo:
