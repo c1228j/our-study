@@ -21,11 +21,22 @@ services:
       context: .
       dockerfile: ./dockerfiles/nuxt/Dockerfile
     tty: true
+    # 初回のみ yarn install するようにする
+    # 参考: https://genzouw.com/entry/2021/04/28/215832/2563/
+    entrypoint:
+      - sh
     command:
-      sh -c '
-        cd scraper &&
-        yarn dev'
+      - -c
+      - |
+        cd scraper
+        [ -f ./.yarn-install-once ] || {
+          yarn install && touch ./.yarn-install-once
+        }
+        yarn dev
     volumes:
       - ./frontend:/app
+      - node_modules_volume:/app/scraper/node_modules
     ports:
       - "3000:3000"
+volumes:
+  node_modules_volume:
