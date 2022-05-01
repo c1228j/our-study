@@ -1,32 +1,13 @@
-# frontend
-## Version
-- Node.js v16.14.2
-- Nuxt.js nuxt@2.15.8
+## Introductioin
+- This is an app designed to study team development 
+- You can serach news from Yahoo News(https://news.yahoo.co.jp/)
+
 ## Usage
+- install docker
+- Execute the following command
+
 ```bash
-$ yarn dev
-```
-open http://localhost:3000/ in your browser
-
-# backend
-## Usage
-### How to create virtual environment 
-```bash
-# create virtual environment 
-$ python -m venv myvenv
-
-# activate virtual environment
-$ myvenv/scripts/activate
-
-# activate virtual environment (Linux)
-$ . myvenv/bin/activate
-
-# install package
-$ pip install -r requirements.txt
+$ docker-compose up -d
 ```
 
-### How to run
-```bash
-$ cd backend
-$ python manage.py runserver
-```
+- open http://localhost:3000/ in your browser
