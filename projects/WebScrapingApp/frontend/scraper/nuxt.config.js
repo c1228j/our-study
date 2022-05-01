@@ -55,7 +55,7 @@ export default {
   },
   // avoid CORS error
   proxy: {
-    '/sample_api/': 'http://127.0.0.1:8000',
+    '/sample_api/': 'http://backend:8000',
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -79,5 +79,11 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  // 参考: https://blog.mintsu-dev.com/posts/2020-08-04-virtualbox-nuxt/
+  server: {
+    port: 3000, // デフォルト: 3000
+    host: '0.0.0.0' // デフォルト: localhost
   }
 }
