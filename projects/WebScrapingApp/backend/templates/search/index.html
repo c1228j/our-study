@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if keyword %}
+    <h1>{{ keyword }}について</h1>
+    {% endif %}
+
+    {% if form %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">送信</button>
+    </form>
+    {% endif %}
+
+    {% if data_list %}
+        {% for data_dic in data_list %}
+            <p>{{ data_dic.title }}</p>
+            <p><a href="{{ data_dic.url }}">{{ data_dic.url }}</a></p>
+            {% if data_dic.body %}
+                <p>{{ data_dic.body }}</p>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
