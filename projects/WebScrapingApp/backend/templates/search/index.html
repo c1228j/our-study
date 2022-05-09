@@ -6,6 +6,7 @@
     {% endif %}
 
     {% if form %}
+    <h3>検索したニュースのキーワードを入力してください。</h3>
     <form method="post">
         {% csrf_token %}
         {{ form }}
