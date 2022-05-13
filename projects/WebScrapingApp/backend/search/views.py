@@ -32,10 +32,11 @@ class ScrapingView(generic.FormView):
     form_class = SearchForm
     success_url = reverse_lazy('search:index')
 
+    NEWS_KEYWORD = "ウクライナ"
+    NEWS_NUMBER = 5
+
     def __init__(self):
         self.scraper = scraper.ScraperFromYahoo()
-        self.number = 5
-        self.KEYWORD = ''
 
     def form_valid(self, form):
         keyword = form.cleaned_data['keyword']
