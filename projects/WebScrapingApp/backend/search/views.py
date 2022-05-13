@@ -7,11 +7,11 @@ from .forms import SearchForm
 
 class ScrapingUkraineView(generic.TemplateView):
     template_name = 'search/index.html'
+    NEWS_NUMBER = 5
 
     def __init__(self):
         self.scraper = scraper.ScraperFromYahoo()
         self.KEYWORD = 'ウクライナ'
-        self.number = 5
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -38,7 +38,7 @@ class ScrapingView(generic.FormView):
         self.KEYWORD = ''
 
     def form_valid(self, form):
-        keyword = form.cleaned_data['search']
+        keyword = form.cleaned_data['search_words']
         ScrapingUkraineView.KEYWORD = keyword
 
         news_list = self.scraper.search(ScrapingUkraineView.KEYWORD, self.number)
