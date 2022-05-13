@@ -38,7 +38,7 @@ class ScrapingView(generic.FormView):
         self.KEYWORD = ''
 
     def form_valid(self, form):
-        keyword = form.cleaned_data['search_words']
+        keyword = form.cleaned_data['keyword']
         ScrapingUkraineView.KEYWORD = keyword
 
         news_list = self.scraper.search(ScrapingUkraineView.KEYWORD, self.number)
