@@ -1,4 +1,4 @@
 from django import forms 
 
-class SearchForm(forms.Form):
-    search = forms.CharField(label='キーワード')
+class KeywordForm(forms.Form):
+    keyword = forms.CharField(label='キーワード')
