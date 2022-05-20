@@ -16,14 +16,14 @@ class ScrapingUkraineView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        news_list = self.scraper.search(self.KEYWORD, self.number)
+        news_list = self.scraper.search(self.NEWS_KEYWORD, self.NEWS_NUMBER)
         data_list = []
         for news in news_list:
             data = {"title":news.title, "url":news.url, "body": news.body}
             data_list.append(data)
 
         context['data_list'] = data_list
-        context['keyword'] = self.KEYWORD
+        context['keyword'] = self.NEWS_KEYWORD
 
         return context
 
@@ -40,15 +40,15 @@ class ScrapingView(generic.FormView):
 
     def form_valid(self, form):
         keyword = form.cleaned_data['keyword']
-        ScrapingUkraineView.KEYWORD = keyword
+        ScrapingUkraineView.NEWS_KEYWORD = keyword
 
-        news_list = self.scraper.search(ScrapingUkraineView.KEYWORD, self.number)
+        news_list = self.scraper.search(ScrapingUkraineView.NEWS_KEYWORD, self.NEWS_NUMBER)
         data_list = []
         for news in news_list:
             data = {'title': news.title, 'url': news.url}
             data_list.append(data)
 
-        context = self.get_context_data(data_list=data_list, keyword=ScrapingUkraineView.KEYWORD)
+        context = self.get_context_data(data_list=data_list, keyword=ScrapingUkraineView.NEWS_KEYWORD)
         return self.render_to_response(context)
         
 
